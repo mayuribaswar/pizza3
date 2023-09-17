@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="pizza2.css">
+  <title>Pizza Order Form</title>
+</head>
+<body>
+  <div class="pizza-form">
+    <h1>Pizza Order Form</h1>
+    <form>
+      <!-- <div class="form-group">
+        <label class="label" for="pizza-size">Select Pizza Size:</label>
+        <div class="radio-group">
+          <label class="radio-label"><input type="radio" name="pizza-size" value="small"> Small</label>
+          <label class="radio-label"><input type="radio" name="pizza-size" value="medium"> Medium</label>
+          <label class="radio-label"><input type="radio" name="pizza-size" value="large"> Large</label>
+        </div>
+      </div>
+      <div class="form-group">
+        <label class="label" for="toppings">Select Toppings:</label>
+        <div class="checkbox-group">
+          <label class="checkbox-label"><input type="checkbox" name="toppings[]" value="pepperoni"> Pepperoni</label>
+          <label class="checkbox-label"><input type="checkbox" name="toppings[]" value="mushrooms"> Mushrooms</label>
+          <label class="checkbox-label"><input type="checkbox" name="toppings[]" value="onions"> Onions</label>
+          <label class="checkbox-label"><input type="checkbox" name="toppings[]" value="bell-peppers"> Bell Peppers</label>
+        </div>
+      </div>
+      <div class="form-group">
+        <button type="submit" class="btn-submit">Place Order</button>
+      </div> -->
+      <img src="pizza.PNG" alt="" id="pic">
+      <h1 class="Main-heading">Pizza Delivery</h1>
+      <p class="info">Name : <input type="text" name="Name"id="Name" required ></p>
+      <p class="info">Address: <textarea name="Address"   rows="6"></textarea></p>
+      <p class="info">Email: <input type="text" name="Email"></p>
+      <p class="info">Pincode: <input type="number"></p>
+      <p class="info">Phone no: <input type="number" name="Phone_no"></p>
+      <h3 class="info">Pizza Information</h3>
+      <p class="info">Pizza Type : <select name="Pizza-type" id="Pizza-type">
+          <option value="">---select pizza---</option>
+          <option value="Greek pizza">Greek pizza </option>
+          <option value="Tomato pie">Tomato pie </option>
+          <option value="pizza cheese">pizza cheese</option>
+          <!-- <option value="Hawaiian pizza">Hawaiian pizza-</option>
+          <option value="pepperoni">pepperoni-50</option> -->
+      </select></p>
+      <p class="info">Pizza size: <select name="Pizza-size" id="Pizza-size">
+          <option value="">---- pizza - sizes ------ </option>
+          <option value="Small pizza slice">Small pizza slice</option>
+          <option value="Medium pizza slice">Medium pizza slice</option>
+          <option value="Large pizza slice">Large pizza slice</option>
+      </select></p>
+      <p class="info">Watch here for coupons : <input type="number" id="coupon-no"></p>
+      <button onclick="if(couponMatch()==true){ Generate20()}else if(couponMatch()==false){Generate()}" id="btn" class="btn-submit">Generate Bill</button>
+    </form>
+  </div>
+</body>
+<script src="Pizza.js"></script>
+</html>

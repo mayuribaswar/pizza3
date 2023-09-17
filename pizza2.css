@@ -1,0 +1,139 @@
+/* Container for the entire form */
+*{
+  box-sizing: border-box;
+}
+.pizza-form {
+  max-width: 500px;
+  margin: 0 auto;
+  padding: 30px;
+  background: linear-gradient(45deg, #ff5733, #ff6f4f);
+  border-radius: 10px;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.4);
+}
+
+/* Form headings */
+h1 {
+  text-align: center;
+  color: #fff;
+  font-size: 40px;
+}
+#pic {
+  width: 150px;
+  display: block;
+  margin: 0 auto;
+}
+
+.Main-heading {
+  text-align: center;
+  font-size: 30px;
+  margin-top: 10px;
+  color: hwb(56 4% 0%);
+}
+
+
+/* Form fields and labels */
+.form-group {
+  margin-bottom: 20px;
+}
+
+.label {
+  display: block;
+  font-weight: bold;
+  margin-bottom: 10px;
+  color: #fff;
+}
+input[type="text"],
+input[type="number"],
+select,
+textarea {
+  width: 100%;
+  padding: 12px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  margin: 10px;
+}
+/*   
+.input {
+  width: 100%;
+  padding: 12px;
+  border: none;
+  border-radius: 5px;
+  font-size: 16px;
+}
+
+/* Radio buttons for pizza size */
+.radio-group {
+  display: flex;
+  justify-content: space-between;
+}
+
+.radio-label {
+  flex: 1;
+  margin-right: 10px;
+  color: #fff;
+}
+
+/* Checkbox for pizza toppings */
+.checkbox-group {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.checkbox-label {
+  flex: 1;
+  margin-right: 10px;
+  color: #fff;
+}
+
+/* Submit button */
+.btn-submit {
+  display: block;
+  width: 100%;
+  padding: 12px;
+  background-color: #ff8c66;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 18px;
+  transition: background-color 0.3s;
+}
+
+.btn-submit:hover {
+  background-color: #ff5733;
+  transition: background-color 0.3s;
+}
+
+
+input[type="checkbox"],
+input[type="radio"] {
+  display: none;
+}
+
+
+
+.checkbox-label::before,
+.radio-label::before {
+  content: '';
+  display: inline-block;
+  width: 16px;
+  height: 16px;
+  margin-right: 5px;
+  border: 2px solid #fff;
+  border-radius: 3px;
+  vertical-align: middle;
+}
+
+input[type="checkbox"]:checked + .checkbox-label::before,
+input[type="radio"]:checked + .radio-label::before {
+  background-color: #ff5733;
+  border-color: #ff5733;
+}
+ */
+/* Styling for the submit button on hover */
+.btn-submit:hover {
+  background-color: #ff6f4f;
+  transition: background-color 0.3s;
+}
+
+
