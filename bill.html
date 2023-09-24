@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pizza Bill</title>
+    <style>
+    
+    
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-image: url('F:\itr\pizza\pizzabill.PNG'); /* Replace 'path/to/your-image.jpg' with the actual path to your image file */
+            background-size: cover; /* This ensures the image covers the entire body element */
+            background-repeat: no-repeat; /* Prevents the image from repeating */
+            background-attachment: fixed; /* Keeps the background fixed as you scroll */
+        }
+    
+        /* Rest of your existing CSS styles... */
+    
+    
+        h1 {
+            text-align: center;
+            color: #333;
+        }
+    
+        p {
+            font-weight: bold;
+        }
+    
+        table {
+            width: 80%;
+            margin: 0 auto;
+            border-collapse: collapse;
+            background-color: #fff;
+            border: 1px solid #ccc;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+    
+        th, td {
+            padding: 10px;
+            text-align: center;
+            border-bottom: 1px solid #ccc;
+        }
+    
+        th {
+            background-color: #333;
+            color: #fff;
+        }
+    
+        td {
+            background-color: #f9f9f9;
+        }
+    
+        #total {
+            text-align: center;
+            font-size: 18px;
+            margin-top: 20px;
+            color: #333;
+        }
+    </style>
+</head>
+
+
+
+<body onload="load()">
+    <h1>Pizza Bill</h1>
+    <p>Username:</p>
+
+    <table >
+        <tr>
+            <th>ITEM</th>
+            <th>Quantity</th>
+            <th>Amount</th>
+        </tr>
+        <tr>
+            <td id="pcell1"></td>
+            <td id="pcell2"></td>
+            <td id="pcell3"></td>
+        </tr>
+        <tr>
+            <td id="topcell1"></td>
+            <td  id="topcell2"></td>
+            <td  id="topcell3"></td>
+        </tr>
+    </table>
+   <p id="total"></p>
+</body>
+<script>
+   function load(){
+    
+    var str =document.cookie;
+    alert(str);
+    var array =str.split(";");
+    alert(array);
+    for(var t in array){
+        var  name=array[0].split("="); 
+        var size=array[1].split("=");
+        var ptype=array[2].split("=");
+        var total=array[3].split("=");
+
+        document.getElementById("pcell1").textContent=size[1]+" "+ptype[1];
+        document.getElementById("pcell2").textContent=1;
+        document.getElementById("pcell3").textContent=total[1];
+
+        
+    }
+    document.getElementById("total").innerHTML=total;
+    
+
+    document.cookie="name="+name.value+";max-age=0";
+    document.cookie="size="+size+";max-age=0";
+     document.cookie="pizzatype="+pizzaType+";max-age=0";
+     document.cookie="Total="+total+";max-age=0";
+   }
+   
+    
+</script>
+</html>

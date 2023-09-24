@@ -9,53 +9,118 @@
 <body>
   <div class="pizza-form">
     <h1>Pizza Order Form</h1>
-    <form>
-      <!-- <div class="form-group">
-        <label class="label" for="pizza-size">Select Pizza Size:</label>
-        <div class="radio-group">
-          <label class="radio-label"><input type="radio" name="pizza-size" value="small"> Small</label>
-          <label class="radio-label"><input type="radio" name="pizza-size" value="medium"> Medium</label>
-          <label class="radio-label"><input type="radio" name="pizza-size" value="large"> Large</label>
-        </div>
-      </div>
-      <div class="form-group">
-        <label class="label" for="toppings">Select Toppings:</label>
-        <div class="checkbox-group">
-          <label class="checkbox-label"><input type="checkbox" name="toppings[]" value="pepperoni"> Pepperoni</label>
-          <label class="checkbox-label"><input type="checkbox" name="toppings[]" value="mushrooms"> Mushrooms</label>
-          <label class="checkbox-label"><input type="checkbox" name="toppings[]" value="onions"> Onions</label>
-          <label class="checkbox-label"><input type="checkbox" name="toppings[]" value="bell-peppers"> Bell Peppers</label>
-        </div>
-      </div>
-      <div class="form-group">
-        <button type="submit" class="btn-submit">Place Order</button>
-      </div> -->
+    <form action="bill.html">
+   
       <img src="pizza.PNG" alt="" id="pic">
       <h1 class="Main-heading">Pizza Delivery</h1>
-      <p class="info">Name : <input type="text" name="Name"id="Name" required ></p>
+      <p class="info">Name : <input type="text" name="Name" id="Name" required ></p>
       <p class="info">Address: <textarea name="Address"   rows="6"></textarea></p>
       <p class="info">Email: <input type="text" name="Email"></p>
       <p class="info">Pincode: <input type="number"></p>
       <p class="info">Phone no: <input type="number" name="Phone_no"></p>
       <h3 class="info">Pizza Information</h3>
+
       <p class="info">Pizza Type : <select name="Pizza-type" id="Pizza-type">
           <option value="">---select pizza---</option>
           <option value="Greek pizza">Greek pizza </option>
           <option value="Tomato pie">Tomato pie </option>
           <option value="pizza cheese">pizza cheese</option>
-          <!-- <option value="Hawaiian pizza">Hawaiian pizza-</option>
-          <option value="pepperoni">pepperoni-50</option> -->
+        
       </select></p>
+   
+
       <p class="info">Pizza size: <select name="Pizza-size" id="Pizza-size">
           <option value="">---- pizza - sizes ------ </option>
           <option value="Small pizza slice">Small pizza slice</option>
           <option value="Medium pizza slice">Medium pizza slice</option>
           <option value="Large pizza slice">Large pizza slice</option>
       </select></p>
+      <p class="info">Enter Quantity : <input type="number" id="quantity"></p>
+     
+
       <p class="info">Watch here for coupons : <input type="number" id="coupon-no"></p>
-      <button onclick="if(couponMatch()==true){ Generate20()}else if(couponMatch()==false){Generate()}" id="btn" class="btn-submit">Generate Bill</button>
+
+      <input type="button" value="Match" onclick="couponMatch()" class="btn-submit">
+
+      <button  type="submit"  id="btn" class="btn-submit">Generate Bill</button>
+      <input type="button" value="Display cookie" onclick="display()">
     </form>
   </div>
 </body>
-<script src="Pizza.js"></script>
+<script >
+ let coupon=[123,456,789];
+ var total=0;
+ 
+function create(){
+    let name = document.getElementById("Name");
+    let pizzaType = document.getElementById("Pizza-type").value;
+    let  size = document.getElementById("Pizza-size").value;
+
+     document.cookie="name="+name.value+";max-age="+(60*60*24*365);
+      document.cookie="size="+size+";max-age="+(60*60*24*365);
+      document.cookie="pizzatype="+pizzaType+";max-age="+(60*60*24*365);
+      document.cookie="Total="+total+";max-age="+(60*60*24*365);
+  
+       // document.cookie="Total="+total+";max-age="+(60*60*24*365);
+}
+function couponMatch(){
+    let b=document.getElementById("coupon-no").value;
+    for(let i=0;i<coupon.length;i++)
+    {
+        if(b==coupon[i]){
+           
+          Generate20();
+            break;
+        }else{
+            
+          Generate();
+            break;
+        }
+    }
+    create();
+}
+
+function Generate(){
+ 
+
+  let quant =document.getElementById("quantity").value;
+  let c=document.getElementById("Pizza-size").value;
+  
+  alert("sorry matching failed")
+  
+  
+  
+        switch(c){
+            case "Small pizza slice": total=(100*quant);break;
+            case "Medium pizza slice":total=(200*quant);break;
+            case "Large pizza slice":total=(300*quant);break;
+        }
+   
+        
+}
+function Generate20(){
+  let quant =document.getElementById("quantity").value;
+
+  let c=document.getElementById("Pizza-size").value;
+  
+  alert("coupon no matched")
+  
+
+    
+        switch(c){
+            case "Small pizza slice":total=((100-(100*0.2))*quant);break;
+            case "Medium pizza slice":total=((200-(200*0.2))*quant);break;
+            case "Large pizza slice":total=((300-(300*0.2))*quant);break;
+        }
+    
+
+}
+  
+   
+   function display(){
+   
+  alert(document.cookie);
+   }
+
+</script>
 </html>
