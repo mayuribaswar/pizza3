@@ -52,14 +52,16 @@
  var total=0;
  
 function create(){
-    let name = document.getElementById("Name");
-    let pizzaType = document.getElementById("Pizza-type").value;
-    let  size = document.getElementById("Pizza-size").value;
+    var name = document.getElementById("Name");
+    var pizzaType = document.getElementById("Pizza-type").value;
+    var  size = document.getElementById("Pizza-size").value;
+    var quant =document.getElementById("quantity").value;
 
-     document.cookie="name="+name.value+";max-age="+(60*60*24*365);
-      document.cookie="size="+size+";max-age="+(60*60*24*365);
-      document.cookie="pizzatype="+pizzaType+";max-age="+(60*60*24*365);
-      document.cookie="Total="+total+";max-age="+(60*60*24*365);
+     document.cookie="name="+name.value+";max-age="+(60*60);
+      document.cookie="size="+size+";max-age="+(60*60);
+      document.cookie="pizzatype="+pizzaType+";max-age="+(60*60);
+      document.cookie="quantity="+quant+";max-age="+(60*60);
+      document.cookie="Total="+total+";max-age="+(60*60);
   
        // document.cookie="Total="+total+";max-age="+(60*60*24*365);
 }
@@ -116,7 +118,6 @@ function Generate20(){
 
 }
   
-   
    function display(){
    
   alert(document.cookie);
