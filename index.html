@@ -1,128 +1,121 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="pizza2.css">
-  <title>Pizza Order Form</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles.css">
+    <title>Login</title>
+    <style>
+ body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+}
+
+.container {
+    background-color: #ffffff;
+    background-image: url("pizzabill.PNG");
+    width: 40%;
+    min-height: 60vh;
+     background-repeat: no-repeat;
+    background-size: cover;
+    padding: 20px;
+    border-radius: 5px;
+    box-shadow: 0 2px 5px rgba(190, 130, 19, 0.1);
+    text-align: center;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    background-color: rgba(255, 255, 255, 0.541); /* Transparent white background */
+    padding: 10px;
+    border-radius: 10px;
+    min-height: 60vh;
+    align-items: top;
+}
+
+h2 {
+    color: #1201fa; /* Blue heading color */
+    font-family: Georgia, 'Times New Roman', Times, serif;
+}
+
+.form-group {
+    margin: 10px 0;
+}
+
+label {
+    font-weight: bold;
+    margin: 30px;
+}
+
+input {
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 16px;
+}
+
+button {
+    padding: 12px;
+    margin-top: 30px;
+    background-color: #8c00ff;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    font-size: 18px;
+    cursor: pointer;
+    transition: background-color 0.3s ease-in-out;
+}
+
+button:hover {
+    background-color: #0056b3;
+}
+
+.hidden {
+    display: none;
+}
+
+#error-message {
+    color: red;
+    font-weight: bold;
+}
+</style>
+
+
+    
 </head>
 <body>
-  <div class="pizza-form">
-    <h1>Pizza Order Form</h1>
-    <form action="bill.html">
-   
-      <img src="pizza.PNG" alt="" id="pic">
-      <h1 class="Main-heading">Pizza Delivery</h1>
-      <p class="info">Name : <input type="text" name="Name" id="Name" required ></p>
-      <p class="info">Address: <textarea name="Address"   rows="6"></textarea></p>
-      <p class="info">Email: <input type="text" name="Email"></p>
-      <p class="info">Pincode: <input type="number"></p>
-      <p class="info">Phone no: <input type="number" name="Phone_no"></p>
-      <h3 class="info">Pizza Information</h3>
-
-      <p class="info">Pizza Type : <select name="Pizza-type" id="Pizza-type">
-          <option value="">---select pizza---</option>
-          <option value="Greek pizza">Greek pizza </option>
-          <option value="Tomato pie">Tomato pie </option>
-          <option value="pizza cheese">pizza cheese</option>
+    <div class="container">
+        <form id="login-form" action="Pizza.html">
+            <h2 >Login</h2>
+            <div class="form-group">
+                <label for="username">Username</label>
+                <input type="text" id="username" name="username" required>
+            </div>
+            <div class="form-group">
+                <label for="password">Password</label>
+                <input type="password" id="password" name="password" required><br><br>
+            </div>
+            <button type="submit" onclick="fun()">Login</button>
+        </form>
         
-      </select></p>
-   
+    <script >
+         
+            function login(){
+         var a= document.getElementById("uname").value;
+         var b= document.getElementById("psw").value;
+         
+         document.cookie="UserName="+a+";Password="+b;
 
-      <p class="info">Pizza size: <select name="Pizza-size" id="Pizza-size">
-          <option value="">---- pizza - sizes ------ </option>
-          <option value="Small pizza slice">Small pizza slice</option>
-          <option value="Medium pizza slice">Medium pizza slice</option>
-          <option value="Large pizza slice">Large pizza slice</option>
-      </select></p>
-      <p class="info">Enter Quantity : <input type="number" id="quantity"></p>
-     
-
-      <p class="info">Watch here for coupons : <input type="number" id="coupon-no"></p>
-
-    
-
-      <button  type="submit"  id="btn" class="btn-submit" onclick="couponMatch()">Generate Bill</button><br><br>
-     
-    </form>
-  </div>
-</body>
-<script >
- let coupon=[123,456,789];
- var total=0;
- 
-function create(){
-    var name = document.getElementById("Name");
-    var pizzaType = document.getElementById("Pizza-type").value;
-    var  size = document.getElementById("Pizza-size").value;
-    var quant =document.getElementById("quantity").value;
-
-     document.cookie="name="+name.value+";max-age="+(60*60);
-      document.cookie="size="+size+";max-age="+(60*60);
-      document.cookie="pizzatype="+pizzaType+";max-age="+(60*60);
-      document.cookie="quantity="+quant+";max-age="+(60*60);
-      document.cookie="Total="+total+";max-age="+(60*60);
-  
-       // document.cookie="Total="+total+";max-age="+(60*60*24*365);
-}
-function couponMatch(){
-    let b=document.getElementById("coupon-no").value;
-    for(let i=0;i<coupon.length;i++)
-    {
-        if(b==coupon[i]){
-           
-          Generate20();
-            break;
-        }else{
-            
-          Generate();
-            break;
-        }
+         alert("Login successful !")
     }
-    create();
-    display();
-}
-
-function Generate(){
- 
-
-  let quant =document.getElementById("quantity").value;
-  let c=document.getElementById("Pizza-size").value;
-  
-  alert("sorry matching failed")
-  
-  
-  
-        switch(c){
-            case "Small pizza slice": total=(100*quant);break;
-            case "Medium pizza slice":total=(200*quant);break;
-            case "Large pizza slice":total=(300*quant);break;
-        }
-   
         
-}
-function Generate20(){
-  let quant =document.getElementById("quantity").value;
-
-  let c=document.getElementById("Pizza-size").value;
-  
-  alert("coupon no matched")
-  
-
-    
-        switch(c){
-            case "Small pizza slice":total=((100-(100*0.2))*quant);break;
-            case "Medium pizza slice":total=((200-(200*0.2))*quant);break;
-            case "Large pizza slice":total=((300-(300*0.2))*quant);break;
-        }
-    
-
-}
-  
-   function display(){
-   
-  alert(document.cookie);
-   }
-
-</script>
+    </script>
+</body>
 </html>

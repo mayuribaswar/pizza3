@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="pizza2.css">
+  <title>Pizza Order Form</title>
+</head>
+<body onload="fun1()">
+  <div class="pizza-form">
+    <h1>Pizza Order Form</h1>
+    <form action="bill.html">
+   
+      <img src="pizza.PNG" alt="" id="pic">
+      <h1 id="h1" style="text-align: center;" >Timer</h1>
+      <h2 id="h2" style="text-align: center;" Font-size="50px">00</h2>
+      <h1 class="Main-heading">Pizza Delivery</h1>
+      <p class="info">Name : <input type="text" name="Name" id="Name" required ></p>
+      <p class="info">Address: <textarea name="Address"   rows="6"></textarea></p>
+      <p class="info">Email: <input type="text" name="Email"></p>
+      <p class="info">Pincode: <input type="number"></p>
+      <p class="info">Phone no: <input type="number" name="Phone_no"></p>
+      <h3 class="info">Pizza Information</h3>
+
+      <p class="info">Pizza Type : <select name="Pizza-type" id="Pizza-type">
+          <option value="">---select pizza---</option>
+          <option value="Greek pizza">Greek pizza </option>
+          <option value="Tomato pie">Tomato pie </option>
+          <option value="pizza cheese">pizza cheese</option>
+        
+      </select></p>
+   
+
+      <p class="info">Pizza size: <select name="Pizza-size" id="Pizza-size">
+          <option value="">---- pizza - sizes ------ </option>
+          <option value="Small pizza slice">Small pizza slice</option>
+          <option value="Medium pizza slice">Medium pizza slice</option>
+          <option value="Large pizza slice">Large pizza slice</option>
+      </select></p>
+      <p class="info">Enter Quantity : <input type="number" id="quantity"></p>
+     
+
+      <p class="info">Watch here for coupons : <input type="number" id="coupon-no"></p>
+
+    
+
+      <button  type="submit"  id="btn" class="btn-submit" onclick="couponMatch()">Generate Bill</button><br><br>
+     
+    </form>
+  </div>
+</body>
+<script >
+ let coupon=[123,456,789];
+ var total=0;
+ var id;
+    var seconds=50;
+    var h2 =document.getElementById("h2");
+    var h1 =document.getElementById("h1");
+    function fun1(){
+      id=setInterval('fun2()',1000);
+
+    }
+    function fun2(){
+        h2.innerHTML=seconds;
+
+        if(seconds==0){
+            clearInterval(id);
+            alert("OOP's Times Up");
+            document.getElementById("coupon-no").disabled="true";
+        }else 
+        seconds--;   
+    }
+function create(){
+    var name = document.getElementById("Name");
+    var pizzaType = document.getElementById("Pizza-type").value;
+    var  size = document.getElementById("Pizza-size").value;
+    var quant =document.getElementById("quantity").value;
+
+     document.cookie="name="+name.value+";max-age="+(60*60);
+      document.cookie="size="+size+";max-age="+(60*60);
+      document.cookie="pizzatype="+pizzaType+";max-age="+(60*60);
+      document.cookie="quantity="+quant+";max-age="+(60*60);
+      document.cookie="Total="+total+";max-age="+(60*60);
+  
+       // document.cookie="Total="+total+";max-age="+(60*60*24*365);
+}
+function couponMatch(){
+  let b=document.getElementById("coupon-no").value;
+  if(seconds<=50 && seconds>0){
+           //cupone match 20% off bill
+    for(let i=0;i<coupon.length;i++)
+    {
+        if(b==coupon[i]){
+           
+          Generate20();
+            break;
+        }else{
+            
+          Generate();
+            break;
+        }
+    }
+  }else{
+    //generate fuction 
+    Generate();
+  }
+  
+  
+  create();
+  display();
+}
+
+function Generate(){
+  
+  alert("Sorry you need to pay complete bill");
+
+  let quant =document.getElementById("quantity").value;
+  let c=document.getElementById("Pizza-size").value;
+  
+  
+  
+  
+        switch(c){
+            case "Small pizza slice": total=(100*quant);break;
+            case "Medium pizza slice":total=(200*quant);break;
+            case "Large pizza slice":total=(300*quant);break;
+        }
+   
+        
+}
+function Generate20(){
+  let quant =document.getElementById("quantity").value;
+
+  let c=document.getElementById("Pizza-size").value;
+  
+  alert("coupon  matched  YOU WILL GET 20% off");
+  
+
+    
+        switch(c){
+            case "Small pizza slice":total=((100-(100*0.2))*quant);break;
+            case "Medium pizza slice":total=((200-(200*0.2))*quant);break;
+            case "Large pizza slice":total=((300-(300*0.2))*quant);break;
+        }
+    
+
+}
+  
+   function display(){
+   
+  alert(document.cookie);
+   }
+
+</script>
+</html>
