@@ -56,6 +56,7 @@
     var seconds=50;
     var h2 =document.getElementById("h2");
     var h1 =document.getElementById("h1");
+
     function fun1(){
       id=setInterval('fun2()',1000);
 
@@ -66,10 +67,14 @@
         if(seconds==0){
             clearInterval(id);
             document.getElementById("coupon-no").disabled="true";
-            alert("OOP's Times Up");
+            // alert("OOP's Times Up");
+            // Generate();
+      
+            
         }else 
         seconds--;   
     }
+  
 function create(){
     var name = document.getElementById("Name");
     var pizzaType = document.getElementById("Pizza-type").value;
