@@ -40,7 +40,7 @@
      
 
       <p class="info">Watch here for coupons : <input type="number" id="coupon-no" onfocus="fun1()"></p>
-      <p class="info">Timer:<h2 id="h2" style="text-align: center;" Font-size="50px">00</h2></p>
+      <p class="info" ><h2 id="h2" style=" display: none;text-align: center;" Font-size="50px">00</h2></p>
 
     
 
@@ -62,8 +62,8 @@
 
     }
     function fun2(){
-        h2.innerHTML=seconds;
-
+        h2.innerHTML="Timer :<br>"+seconds;
+        h2.style="display:block; text-align: center;";
         if(seconds==0){
             clearInterval(id);
             document.getElementById("coupon-no").disabled="true";
