@@ -19,25 +19,31 @@
 
 .container {
     background-color: #ffffff;
-    background-image: url("pizzabill.PNG");
-    width: 40%;
-    min-height: 60vh;
-     background-repeat: no-repeat;
+    background-image: url("p3.PNG");
+    background-repeat: no-repeat;
     background-size: cover;
     padding: 20px;
     border-radius: 5px;
-    box-shadow: 0 2px 5px rgba(190, 130, 19, 0.1);
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
     text-align: center;
+    border: 5px solid black;
+    height: 500px;
+    width: 500px;
 }
 
 form {
     display: flex;
     flex-direction: column;
-    background-color: rgba(255, 255, 255, 0.541); /* Transparent white background */
-    padding: 10px;
+    box-shadow: inset 0 0 2000px  rgb(255, 255, 255);
+    filter:blur();
+    /* Transparent white background */
+    padding: 20px;
+    padding-top: 70px;
     border-radius: 10px;
-    min-height: 60vh;
-    align-items: top;
+    height: 300px;
+    width: 400px;
+    margin-top: 50px;
+    margin-left: 29PX;
 }
 
 h2 {
@@ -51,7 +57,6 @@ h2 {
 
 label {
     font-weight: bold;
-    margin: 30px;
 }
 
 input {
@@ -63,7 +68,6 @@ input {
 
 button {
     padding: 12px;
-    margin-top: 30px;
     background-color: #8c00ff;
     color: #fff;
     border: none;
@@ -86,36 +90,41 @@ button:hover {
     font-weight: bold;
 }
 </style>
-
-
-    
 </head>
 <body>
-    <div class="container" >
-        <form id="login-form" action="Pizza.html">
-            <h2 >Login</h2>
+    <div class="container">
+        <form id="login-form" action="Pizza.html" onsubmit="return fun()">
+          <strong>  <h2 style="color: black; font-size: 30px;">Login</h2></strong>
             <div class="form-group">
                 <label for="username">Username</label>
-                <input type="text" id="username" name="username" required>
+                <input type="text" id="uname" name="username" value="username"  required><br>
             </div>
             <div class="form-group">
                 <label for="password">Password</label>
-                <input type="password" id="password" name="password" required><br><br>
+                <input type="password" id="psw" name="password" value="password" required><br><br>
+                <label for="" style="color:yellow;">password must be greater than 8 characters </label>
             </div>
-            <button type="submit" onclick="fun()">Login</button>
+            <button type="submit">Login</button>
         </form>
-        
-    <script >
-         
-            function login(){
-         var a= document.getElementById("uname").value;
-         var b= document.getElementById("psw").value;
-         
-         document.cookie="UserName="+a+";Password="+b;
-
-         alert("Login successful !")
-    }
-        
-    </script>
+        <script>
+            function fun() {
+                var a = document.getElementById("uname").value;
+                var b = document.getElementById("psw").value;
+    
+                // Password regular expression: at least 8 characters
+                var passwordRegex = /.{8,}/;
+    
+                if (!passwordRegex.test(b)) {
+                    alert("Password must be at least 8 characters long");
+                    b.value="";
+                    return false;
+                } else {
+                    // Set cookies only if the password is valid
+                    document.cookie = "UserName=" + a + ";Password=" + b;
+                    alert("Login successful !");
+                    return true;
+                }
+            }
+        </script>
 </body>
 </html>

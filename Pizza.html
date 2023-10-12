@@ -9,16 +9,16 @@
 <body >
   <div class="pizza-form">
     <h1>Pizza Order Form</h1>
-    <form action="bill.html">
+    <form action="bill.html" onsubmit="return validate()">
    
       <img src="pizza.PNG" alt="" id="pic">
       <!-- <h1 id="h1" style="text-align: center;" >Timer</h1> -->
       <h1 class="Main-heading">Pizza Delivery</h1>
       <p class="info">Name : <input type="text" name="Name" id="Name" required ></p>
-      <p class="info">Address: <textarea name="Address"   rows="6"></textarea></p>
-      <p class="info">Email: <input type="text" name="Email"></p>
-      <p class="info">Pincode: <input type="number"></p>
-      <p class="info">Phone no: <input type="number" name="Phone_no"></p>
+      <p class="info">Address: <textarea name="Address"  id="Add" rows="6" required></textarea></p>
+      <p class="info">Email: <input type="text" name="Email" id="email" required></p>
+      <p class="info">Pincode: <input type="text" id="pin" required></p>
+      <p class="info">Phone no: <input type="text" name="Phone_no" id="phone" required></p>
       <h3 class="info">Pizza Information</h3>
 
       <p class="info">Pizza Type : <select name="Pizza-type" id="Pizza-type">
@@ -56,6 +56,37 @@
     var seconds=50;
     var h2 =document.getElementById("h2");
     var h1 =document.getElementById("h1");
+
+    ///validation logic
+    var name1=document.getElementById("Name").value;
+   // var add=document.getElementById("Add").value;
+    var email=document.getElementById("email").value;
+    var pincode=document.getElementById("pin").value;
+    var phone=document.getElementById("phone").value;
+
+    
+
+    // function validate(){
+    //   var n=/^[A-Z a-z]{5,15}$/;
+    //         if(!n.test(name1)){
+    //             alert(" name is invalid");
+    //         }
+
+    //         var e=/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
+    //         if(!e.test(email)){
+    //             alert(" email id is invalid");
+    //         }
+    //         var pin_no=/^4\d{5}$/;
+    //         if(!pin_no.test(pincode)){
+    //             alert(" pincode is invalid");
+    //         }
+    //         var Phone_no=/^[789]\d{9}$/;
+    //         if(!Phone_no.test(phone)){
+    //             alert(" phone no is invalid");
+    //         }
+            
+
+    // }
 
     function fun1(){
       id=setInterval('fun2()',1000);
