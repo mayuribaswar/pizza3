@@ -9,16 +9,21 @@
 <body >
   <div class="pizza-form">
     <h1>Pizza Order Form</h1>
-    <form action="bill.html" onsubmit="return validate()">
+    <form action="bill.html" onsubmit="return validateForm()">
    
       <img src="pizza.PNG" alt="" id="pic">
-      <!-- <h1 id="h1" style="text-align: center;" >Timer</h1> -->
+      
       <h1 class="Main-heading">Pizza Delivery</h1>
-      <p class="info">Name : <input type="text" name="Name" id="Name" required ></p>
+      <p class="info">Name :<input type="text" name="Name" id="Name" placeholder="enter only 5-15 characters" required >
+      </p>  
+      <!-- after required patter="regular expression without forward slash" -->
       <p class="info">Address: <textarea name="Address"  id="Add" rows="6" required></textarea></p>
-      <p class="info">Email: <input type="text" name="Email" id="email" required></p>
-      <p class="info">Pincode: <input type="text" id="pin" required></p>
-      <p class="info">Phone no: <input type="text" name="Phone_no" id="phone" required></p>
+      <p class="info">Email: <input type="text" name="Email" placeholder="abc@gmail.com" id="email" required >
+      </p>
+      <p class="info">Pincode: <input type="text" id="pin" placeholder="enter 6 digits starting with 4" required >
+      </p>
+      <p class="info">Phone no: <input type="text" placeholder="Enter 10 digits" name="Phone_no" id="phone" required >
+      </p>
       <h3 class="info">Pizza Information</h3>
 
       <p class="info">Pizza Type : <select name="Pizza-type" id="Pizza-type">
@@ -44,7 +49,7 @@
 
     
 
-      <button  type="submit"  id="btn" class="btn-submit" onclick="couponMatch()">Generate Bill</button><br><br>
+      <button  type="submit"  id="btn" class="btn-submit">Generate Bill</button><br><br>
      
     </form>
   </div>
@@ -57,36 +62,45 @@
     var h2 =document.getElementById("h2");
     var h1 =document.getElementById("h1");
 
-    ///validation logic
-    var name1=document.getElementById("Name").value;
-   // var add=document.getElementById("Add").value;
-    var email=document.getElementById("email").value;
-    var pincode=document.getElementById("pin").value;
-    var phone=document.getElementById("phone").value;
+    function validateForm() {
+            var name = document.getElementById("Name").value;
+            var address = document.getElementById("Add").value;
+            var email = document.getElementById("email").value;
+            var pin = document.getElementById("pin").value;
+            var phone = document.getElementById("phone").value;
 
-    
+            // Regular expressions for validation
+            var namePattern = /^.{5,15}$/;
+            var emailPattern = /^[a-zA-Z0-9._%+-]+@gmail\.com$/;
+            var pinPattern = /^4\d{5}$/;
+            var phonePattern = /^[789]\d{9}$/;
 
-    // function validate(){
-    //   var n=/^[A-Z a-z]{5,15}$/;
-    //         if(!n.test(name1)){
-    //             alert(" name is invalid");
-    //         }
+            if (!name.match(namePattern)) {
+                alert("Name should be between 5 and 15 characters.");
+                return false;
+                name.value="";
+            }
 
-    //         var e=/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
-    //         if(!e.test(email)){
-    //             alert(" email id is invalid");
-    //         }
-    //         var pin_no=/^4\d{5}$/;
-    //         if(!pin_no.test(pincode)){
-    //             alert(" pincode is invalid");
-    //         }
-    //         var Phone_no=/^[789]\d{9}$/;
-    //         if(!Phone_no.test(phone)){
-    //             alert(" phone no is invalid");
-    //         }
-            
+            if (!email.match(emailPattern)) {
+                alert("Email should be in the format 'abc@gmail.com'.");
+                return false;
+                email.value="";
+            }
 
-    // }
+            if (!pin.match(pinPattern)) {
+                alert("Pincode should be 6 digits starting with 4.");
+                return false;
+                pin.value="";
+            }
+
+            if (!phone.match(phonePattern)) {
+                alert("Phone number should be 10 digits.");
+                return false;
+                phone.value="";
+            }
+            couponMatch();
+            return true;
+        }
 
     function fun1(){
       id=setInterval('fun2()',1000);
@@ -190,3 +204,18 @@ function Generate20(){
 
 </script>
 </html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
