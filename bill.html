@@ -62,7 +62,8 @@
 
 <body onload="load()">
     <h1>Pizza Bill</h1>
-    <p id="p1">Username:</p>
+    <p id="cong" style="text-align: center; Font-size:80; font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif; color: #2c07ff ;"></p>
+    <p id="p1" style="text-align: center; Font-size:80; font-family: 'Times New Roman', Times, serif;   font-weight: bold; color:crimson ;">Username:</p>
 
     <table >
         <tr>
@@ -84,9 +85,6 @@
 </body>
 <script>
    function load(){
-    
-    
-        
 
         if(document.cookie.length!=0){
             var  array = document.cookie.split(";");
@@ -112,6 +110,11 @@
                     
                     document.getElementById("pcell4").textContent=t[1];
                     document.getElementById("total").innerHTML="Total Bill :"+t[1];
+                }
+                if(t[0].trim()=="is20"){
+                    if(t[1]=="1"){
+                        document.getElementById("cong").innerHTML="Congratulations You got 20% Off";
+                    }
                 }
             }
         }

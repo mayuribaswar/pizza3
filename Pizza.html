@@ -14,7 +14,7 @@
       <img src="pizza.PNG" alt="" id="pic">
       
       <h1 class="Main-heading">Pizza Delivery</h1>
-      <p class="info">Name :<input type="text" name="Name" id="Name" placeholder="enter only 5-15 characters" required >
+      <p class="info">Name :<input type="text" name="Name" id="Name" placeholder="enter only 5-25 characters" required >
       </p>  
       <!-- after required patter="regular expression without forward slash" -->
       <p class="info">Address: <textarea name="Address"  id="Add" rows="6" required></textarea></p>
@@ -61,22 +61,22 @@
     var seconds=50;
     var h2 =document.getElementById("h2");
     var h1 =document.getElementById("h1");
-
+    var is20 =1;
     function validateForm() {
             var name = document.getElementById("Name").value;
             var address = document.getElementById("Add").value;
             var email = document.getElementById("email").value;
             var pin = document.getElementById("pin").value;
             var phone = document.getElementById("phone").value;
-
+            
             // Regular expressions for validation
-            var namePattern = /^.{5,15}$/;
+            var namePattern = /^.{5,25}$/;
             var emailPattern = /^[a-zA-Z0-9._%+-]+@gmail\.com$/;
             var pinPattern = /^4\d{5}$/;
             var phonePattern = /^[789]\d{9}$/;
 
             if (!name.match(namePattern)) {
-                alert("Name should be between 5 and 15 characters.");
+                alert("Name should be between 5 and 25 characters.");
                 return false;
                 name.value="";
             }
@@ -132,7 +132,7 @@ function create(){
       document.cookie="pizzatype="+pizzaType+";max-age="+(60*60);
       document.cookie="quantity="+quant+";max-age="+(60*60);
       document.cookie="Total="+total+";max-age="+(60*60);
-  
+      document.cookie="is20="+is20+";max-age="+(60*60);
        // document.cookie="Total="+total+";max-age="+(60*60*24*365);
 }
 function couponMatch(){
@@ -164,7 +164,7 @@ function couponMatch(){
 function Generate(){
   
   alert("Sorry you need to pay complete bill");
-
+   is20=0;
   let quant =document.getElementById("quantity").value;
   let c=document.getElementById("Pizza-size").value;
   
